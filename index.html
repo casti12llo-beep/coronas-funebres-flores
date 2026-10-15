@@ -236,6 +236,29 @@ font-size:30px;
 
 }
 
+/* ADICIONALES */
+#adicionales{scroll-margin-top:90px}
+.ad-sub{text-align:center;color:#555;font-size:18px;margin:-20px 0 30px}
+.ad-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+.ad-tab{border:2px solid #0f2d2c;background:white;color:#0f2d2c;padding:10px 22px;border-radius:999px;font-weight:600;cursor:pointer;font-size:16px;transition:.2s}
+.ad-tab.activa{background:#0f2d2c;color:white}
+.ad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:24px}
+.ad-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.1);display:flex;flex-direction:column;text-align:center;position:relative}
+.ad-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.ad-card h3{font-size:16px;font-weight:600;margin:14px 12px 4px;min-height:44px;line-height:1.3}
+.ad-card .precio{font-size:22px;margin:6px 0 14px}
+.ad-card .precio s{font-size:15px;color:#999;font-weight:normal;margin-right:6px}
+.ad-card .btn{margin:0 14px 18px;padding:12px 10px;font-size:16px}
+.ad-desc{position:absolute;top:10px;left:10px;background:#d9534f;color:white;font-size:13px;font-weight:700;padding:3px 8px;border-radius:4px}
+.ad-nota{text-align:center;font-size:15px;color:#666;margin-top:24px}
+@media(max-width:768px){
+.ad-sub{margin-top:-10px;font-size:16px}
+.ad-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+.ad-card h3{font-size:14px;min-height:54px}
+.ad-card .precio{font-size:18px}
+.ad-card .btn{font-size:14px;margin:0 8px 14px}
+}
+
 </style>
 
 </head>
@@ -248,6 +271,7 @@ font-size:30px;
 <nav>
 <a href="#inicio">Inicio</a>
 <a href="#catalogo">Catálogo</a>
+<a href="#adicionales">Adicionales</a>
 <a href="#contacto">Contacto</a>
 </nav>
 </header>
@@ -682,11 +706,90 @@ Solicitar por WhatsApp
 <p>La combinación perfecta entre elegancia y celebración. Incluye un espectacular bouquet de rosas rojas premium de exportación, cuidadosamente envuelto en papel coreano texturizado, acompañado de una botella de Baileys Original (700 ml), creando un regalo inolvidable para sorprender en cualquier ocasión especial.</p>
 <div class="precio">$349.900</div>
 <a class="btn" href="https://wa.me/573176360337?text=Hola,%20quiero%20información%20sobre%20Combo%20Pasiòn%20Original" target="_blank"> Cotizar por WhatsApp </a>
-  <a class
-  
+</div>
+</div>
 </div>
 
 </section>
+
+
+<!-- ADICIONALES -->
+<section class="catalogo" id="adicionales">
+
+<h2>🎁 Adicionales</h2>
+<p class="ad-sub">Agrega un detalle a tu pedido: escríbenos y lo enviamos junto con tu arreglo.</p>
+
+<div class="ad-tabs" id="ad-tabs"></div>
+<div class="ad-grid" id="ad-grid"></div>
+
+<p class="ad-nota">Los adicionales se entregan junto con tu arreglo floral. Pregúntanos por disponibilidad.</p>
+
+</section>
+
+<script>
+(function(){
+  var WHATSAPP = "573176360337";
+
+  // ===== EDITA AQUÍ: nombre, precio (en pesos, sin puntos), categoría y foto =====
+  var PRODUCTOS = [
+    {c:"Peluches",             n:"Oso de Felpa Miel",                          p:84900,  img:"adicionales/oso-miel.jpg"},
+    {c:"Peluches",             n:"Oso de Felpa Blanco",                        p:71900,  img:"adicionales/oso-blanco.jpg"},
+
+    {c:"Globos",               n:"Globo Metalizado Te amo 💘",                 p:14900,  img:"adicionales/globo-teamo.jpg"},
+    {c:"Globos",               n:"Globo Metalizado Happy Birthday 🎂",         p:12900,  img:"adicionales/globo-birthday.jpg"},
+    {c:"Globos",               n:"Globo Metalizado Feliz Cumpleaños 🎈",       p:12900,  img:"adicionales/globo-cumple.jpg"},
+    {c:"Globos",               n:"Globo Metalizado Feliz Día del Padre",       p:12900,  img:"adicionales/globo-papa.jpg"},
+    {c:"Globos",               n:"Globo Metalizado Feliz Día 🎉",              p:12900,  img:"adicionales/globo-feliz-dia.jpg"},
+
+    {c:"Licores y dulces",     n:"🥃 Botella de Baileys 700ml",                p:120900, img:"adicionales/baileys-700.jpg"},
+    {c:"Licores y dulces",     n:"🥃 Botella de Baileys 375ml",                p:84900,  img:"adicionales/baileys-375.jpg"},
+    {c:"Licores y dulces",     n:"🍷 Botella de Vino",                         p:120900, img:"adicionales/vino.jpg"},
+    {c:"Licores y dulces",     n:"Caja de Chocolates Ferrero por 8 unidades",  p:65000,  img:"adicionales/ferrero.jpg"},
+
+    {c:"Arreglos con detalle", n:"Caja AMADEA: Arreglo con vino y chocolates", p:284900, img:"adicionales/caja-amadea.jpg"},
+    {c:"Arreglos con detalle", n:"Canasta Floral ROMA: Un Regalo Inolvidable", p:469900, img:"adicionales/canasta-roma.jpg"},
+    {c:"Arreglos con detalle", n:"Arreglo Floral Gourmet ITALINA",             p:435900, antes:601900, desc:"-28%", img:"adicionales/arreglo-italina.jpg"},
+    {c:"Arreglos con detalle", n:"Canasta Gourmet CAPRICE: Rosas y frutas",    p:488900, img:"adicionales/canasta-caprice.jpg"}
+  ];
+  // ===========================================================================
+
+  var fmt = function(n){ return "$" + n.toLocaleString("es-CO"); };
+  var cats = ["Todos"];
+  PRODUCTOS.forEach(function(x){ if(cats.indexOf(x.c)<0) cats.push(x.c); });
+
+  var tabs = document.getElementById("ad-tabs");
+  var grid = document.getElementById("ad-grid");
+
+  function pintar(cat){
+    grid.innerHTML = "";
+    PRODUCTOS.filter(function(x){ return cat==="Todos" || x.c===cat; }).forEach(function(x){
+      var msg = "Hola, quiero agregar a mi pedido: " + x.n + " (" + fmt(x.p) + ")";
+      var card = document.createElement("div");
+      card.className = "ad-card";
+      card.innerHTML =
+        (x.desc ? '<span class="ad-desc">'+x.desc+'</span>' : '') +
+        '<img src="'+x.img+'" alt="'+x.n.replace(/"/g,'')+'" loading="lazy">' +
+        '<h3>'+x.n+'</h3>' +
+        '<div class="precio">'+(x.antes ? '<s>'+fmt(x.antes)+'</s>' : '')+fmt(x.p)+'</div>' +
+        '<a class="btn" target="_blank" rel="noopener" href="https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg)+'">Pedir por WhatsApp</a>';
+      grid.appendChild(card);
+    });
+  }
+
+  cats.forEach(function(cat, i){
+    var b = document.createElement("button");
+    b.className = "ad-tab" + (i===0 ? " activa" : "");
+    b.textContent = cat;
+    b.onclick = function(){
+      document.querySelectorAll(".ad-tab").forEach(function(t){ t.classList.remove("activa"); });
+      b.classList.add("activa");
+      pintar(cat);
+    };
+    tabs.appendChild(b);
+  });
+  pintar("Todos");
+})();
+</script>
 
               <section class="catalogo">
               
