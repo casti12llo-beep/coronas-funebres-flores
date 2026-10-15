@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://casti12llo-beep.github.io/coronas-funebres-flores/sitemap.xml
