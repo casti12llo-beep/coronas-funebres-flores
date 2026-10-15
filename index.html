@@ -259,6 +259,27 @@ font-size:30px;
 .ad-card .btn{font-size:14px;margin:0 8px 14px}
 }
 
+/* MEJORAS: menú móvil, FAQ, anclas */
+#catalogo,#contacto,#preguntas{scroll-margin-top:80px}
+.bottom-bar{display:none}
+.faq{max-width:900px;margin:0 auto}
+.faq details{background:white;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,.08);margin-bottom:12px;padding:0 20px}
+.faq summary{cursor:pointer;font-weight:600;font-size:18px;padding:16px 0;color:#0f2d2c;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:26px;line-height:1;color:#c8a04d}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 0 18px;color:#555;font-size:17px}
+@media(max-width:768px){
+body{padding-bottom:70px}
+.whatsapp{display:none}
+.bottom-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:1100;background:#0f2d2c;box-shadow:0 -2px 10px rgba(0,0,0,.25)}
+.bottom-bar a{flex:1;text-align:center;color:white;text-decoration:none;font-size:12px;font-weight:600;padding:8px 2px;line-height:1.25}
+.bottom-bar a span{display:block;font-size:20px}
+.bottom-bar a.wa{background:#25D366}
+.faq summary{font-size:16px}
+.faq details p{font-size:15px}
+}
+
 </style>
 
 </head>
@@ -366,10 +387,12 @@ Solicitar por WhatsApp
 
 <h2>Nuestro Catálogo</h2>
 
+<div class="ad-tabs" id="cat-tabs"></div>
+
 <div class="productos">
 
-    <div class="producto">
-<img src="Rosa_Eterna.jpg" alt="Rosa Eterna">
+    <div class="producto" data-cat="Flores y bouquets">
+<img src="Rosa_Eterna.jpg" alt="Rosa Eterna" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Rosa Eterna</h3>
 <p>Un bouquet de 24 rosas aterciopeladas, símbolo del amor profundo en la capital..</p>
@@ -378,8 +401,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-    <div class="producto">
-<img src="Bouquet_Brillo_de_Sol.jpg" alt="Bouquet Brillo de Sol">
+    <div class="producto" data-cat="Girasoles">
+<img src="Bouquet_Brillo_de_Sol.jpg" alt="Bouquet Brillo de Sol" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Bouquet Brillo de Sol</h3>
 <p>Un bouquet vibrante que combina la alegría de los girasoles premium con la elegancia de las rosas rojas, envuelto en papel coreano color champán y decorado con un delicado lazo de satén. Perfecto para sorprender, celebrar y llenar de alegría un día especial.</p>
@@ -388,8 +411,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-    <div class="producto">
-<img src="Rosa_color.jpg" alt="El Paraíso Floral">
+    <div class="producto" data-cat="Flores y bouquets">
+<img src="Rosa_color.jpg" alt="El Paraíso Floral" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>El Paraíso Floral</h3>
 <p>Una vibrante y colorida selección de rosas premium que capturan la alegría de un jardín en plena primavera.</p>
@@ -398,8 +421,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-     <div class="producto">
-<img src="Pulso_Vida.jpg" alt="El Pulso de la Vida">
+     <div class="producto" data-cat="Flores y bouquets">
+<img src="Pulso_Vida.jpg" alt="El Pulso de la Vida" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>El Pulso de la Vida</h3>
 <p>Una alegre selección de gerberas premium y follaje exótico, curada con amor y pasión para cualquier rincón del mundo.</p>
@@ -408,8 +431,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="18_rosas_rosa.jpg" alt="Rosa Eterna Premium">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="18_rosas_rosa.jpg" alt="Rosa Eterna Premium" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Rosa Eterna Premium</h3>
 <p>Un elegante bouquet de 18 rosas rosadas seleccionadas, creado con amor y pasión para perdurar. Símbolo de elegancia y afecto duradero.</p>
@@ -418,8 +441,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="Rosas_silvana.jpg" alt="Bouquet Silvana">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="Rosas_silvana.jpg" alt="Bouquet Silvana" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Bouquet Silvana</h3>
 <p>Un deslumbrante arreglo de 60 rosas premium en tonos fuego: rojo pasión, naranja vibrante y amarillo sol.</p>
@@ -428,8 +451,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-   <div class="producto">
-<img src="Rosas_ferrer.jpg" alt="El Romance de la Élite">
+   <div class="producto" data-cat="Flores y bouquets">
+<img src="Rosas_ferrer.jpg" alt="El Romance de la Élite" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>El Romance de la Élite</h3>
 <p>Un elegante conjunto de rosas premium, vino selecto y finos chocolates, curado con amor y sofisticación para cualquier ocasión especial.</p>
@@ -438,8 +461,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="Paraiso_tropical.jpg" alt="El Paraíso Tropical">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="Paraiso_tropical.jpg" alt="El Paraíso Tropical" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>El Paraíso Tropical</h3>
 <p>Un exuberante arreglo de 24 rosas premium de un vibrante tono amarillo sol, cuidadosamente curado para celebrar la elegancia y la alegría.</p>
@@ -448,8 +471,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="Alegria_paris.jpg" alt="Alegria paris">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="Alegria_paris.jpg" alt="Alegria paris" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Alegria Paris</h3>
 <p>Una vibrante selección de gerberas premium, curada con amor y pasión para cualquier rincón del mundo.</p>
@@ -458,8 +481,8 @@ Solicitar por WhatsApp
 </div>
 </div>
   
-  <div class="producto">
-<img src="Girasoles.jpg" alt="El Abrazo del Verano">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="Girasoles.jpg" alt="El Abrazo del Verano" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>El Abrazo del Verano</h3>
 <p>Un radiante conjunto de girasoles seleccionados, un símbolo de alegría y afecto para cualquier ocasión especial.</p>
@@ -468,8 +491,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="Combo_rosas.jpg" alt="El Dúo del Corazón">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="Combo_rosas.jpg" alt="El Dúo del Corazón" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>El Dúo del Corazón</h3>
 <p>Un elegante corazón de rosas premium y Baileys para momentos inolvidables. Hecho con amor.</p>
@@ -478,8 +501,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="Flores_Bouquet.jpg" alt="La Quintaesencia Floral">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="Flores_Bouquet.jpg" alt="La Quintaesencia Floral" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>La Quintaesencia Floral</h3>
 <p>Un exuberante arreglo de rosas premium seleccionadas, un símbolo de alegría y afecto para cualquier rincón del mundo.</p>
@@ -488,8 +511,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="72_rosas.jpg" alt="El Corazón Carmesí">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="72_rosas.jpg" alt="El Corazón Carmesí" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>El Corazón Carmesí</h3>
 <p>Un exuberante arreglo de 72 rosas premium, seleccionadas por su color y forma perfectos, curado para la máxima expresión de amor y sofisticación.</p>
@@ -498,8 +521,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="Bouquet_mano.jpg" alt="Bouquet 24 Rosas">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="Bouquet_mano.jpg" alt="Bouquet 24 Rosas" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Bouquet 24 Rosas</h3>
 <p>Este elegante arreglo combina la pasión de 24 rosas premium seleccionadas por su forma e intensidad, acompañadas de 8 selectos chocolates Ferrero Rocher, presentados sobre una sofisticada envoltura artesanal.</p>
@@ -508,8 +531,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="60_rosas.jpg" alt="La Quintaesencia Floral">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="60_rosas.jpg" alt="La Quintaesencia Floral" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>La Quintaesencia Floral</h3>
 <p>Una suntuosa selección de 60 rosas premium surtidas, presentadas en un arreglo artesanal que simboliza la belleza eterna</p>
@@ -518,8 +541,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="Bouquet_surtido.jpg" alt="El Ensueño Floral">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="Bouquet_surtido.jpg" alt="El Ensueño Floral" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>El Ensueño Floral</h3>
 <p>Una sofisticada combinación de 24 rosas premium en tonos pastel, entrelazadas con finas pinceladas de gipsófila para transmitir pureza y dulzura.</p>
@@ -528,8 +551,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-    <div class="producto">
-<img src="Esencia_París.jpg" alt="Esencia de París">
+    <div class="producto" data-cat="Flores y bouquets">
+<img src="Esencia_París.jpg" alt="Esencia de París" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Esencia de París</h3>
 <p> He preparado para ti una nueva y exquisita versión de tu ramo de rosas rojas y gipsófila. Esta recreación en ultra alta resolución presenta 24 rosas premium en un entorno sofisticado, diseñado para realzar cada detalle de su belleza.</p>
@@ -538,8 +561,8 @@ Solicitar por WhatsApp
 </div>
 </div>
   
-  <div class="producto">
-<img src="Cesta_con_12_Rosas.jpg" alt="Canasta Dulce Romance">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="Cesta_con_12_Rosas.jpg" alt="Canasta Dulce Romance" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Canasta Dulce Romance</h3>
 <p>Elegante arreglo floral con rosas frescas, ideal para ocasiones especiales y condolencias.</p>
@@ -548,8 +571,8 @@ Solicitar por WhatsApp
 </div>
 </div>
  
-  <div class="producto">
-<img src="10_girasoles.png" alt="10_girasoles">
+  <div class="producto" data-cat="Girasoles">
+<img src="10_girasoles.jpg" alt="Arreglo Girasoles Sol de Bogotá" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Arreglo Girasoles Sol de Bogotá</h3>
 <p>Arreglo Girasoles "Sol de Bogotá".</p>
@@ -559,8 +582,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-<div class="producto">
-<img src="corona.jpg" alt="Corona Fúnebre Premium">
+<div class="producto" data-cat="Fúnebres">
+<img src="corona.jpg" alt="Corona Fúnebre Premium" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Corona Fúnebre Paz Infinita</h3>
 <p>Homenaje solemne con flores blancas premium.</p>
@@ -569,8 +592,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-<div class="producto">
-<img src="pedestal.jpg" alt="Pedestal Floral">
+<div class="producto" data-cat="Fúnebres">
+<img src="pedestal.jpg" alt="Pedestal Floral" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Pedestal Fúnebre Serenidad Eterna</h3>
 <p>Arreglo vertical elegante con flores blancas.</p>
@@ -579,8 +602,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-<div class="producto">
-<img src="12_rosas_rojas.jpg" alt="Bouquet Giordana: 24 Rosas">
+<div class="producto" data-cat="Flores y bouquets">
+<img src="12_rosas_rojas.jpg" alt="Bouquet Giordana: 24 Rosas" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Bouquet Giordana: 24 Rosas</h3>
 <p>¡Sorprende con la elegancia y los colores vibrantes de este hermoso bouquet!.</p>
@@ -589,8 +612,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-<div class="producto">
-<img src="24_Rosas.jpg" alt="Arreglo Fúnebre Pétalos del Alma">
+<div class="producto" data-cat="Fúnebres">
+<img src="24_Rosas.jpg" alt="Arreglo Fúnebre Pétalos del Alma" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Arreglo Fúnebre Pétalos del Alma</h3>
   <p>Acompaña a la distancia con un elegante florero de condolencias, ideal para enviar directamente a la residencia familiar.</p>
@@ -599,8 +622,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-<div class="producto">
-<img src="Caja_rosas_corazon.jpg" alt="Caja de Rosas en Corazón">
+<div class="producto" data-cat="Flores y bouquets">
+<img src="Caja_rosas_corazon.jpg" alt="Caja de Rosas en Corazón" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Caja de Rosas en Corazón</h3>
 <p>Hermosa caja en forma de corazón elaborada con rosas frescas, ideal para sorprender en aniversarios, cumpleaños y ocasiones especiales.</p>
@@ -609,8 +632,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-<div class="producto">
-<img src="Gemini_Generated_Image.png" alt="Canasta de Frutas Premium">
+<div class="producto" data-cat="Frutas">
+<img src="Gemini_Generated_Image.jpg" alt="Canasta de Frutas Premium" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Canasta de Frutas Premium</h3>
 <p>Un detalle fresco, saludable y lleno de color para sorprender en cualquier ocasión.</p>
@@ -619,8 +642,8 @@ Solicitar por WhatsApp
 </div>
 </div>
   
-<div class="producto">
-<img src="flores con frutas.jpg" alt="Arreglo Floral con Frutas ">
+<div class="producto" data-cat="Frutas">
+<img src="flores con frutas.jpg" alt="Arreglo Floral con Frutas " loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Flores con frutas</h3>
   <p>Arreglo Floral con Frutas Akebia, ideal para cualquier momento especial.</p>
@@ -629,8 +652,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-<div class="producto">
-<img src="Gemini_Generated_canasta_ult.png" alt="Canasta de Frutas Selectas">
+<div class="producto" data-cat="Frutas">
+<img src="Gemini_Generated_canasta_ult.jpg" alt="Canasta de Frutas Selectas" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Canasta de Frutas Selectas </h3>
 <p>La combinación perfecta de bienestar y frescura. Esta elegante cesta de mimbre artesanal viene cargada con una generosa selección de frutas premium (piña central, manzanas, peras, cítricos y uvas frescas), decorada con un delicado lazo de organza verde.</p>
@@ -639,8 +662,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="Girasoles_rosas_amarillas.jpg" alt="Bouquet Aura Dorada">
+  <div class="producto" data-cat="Girasoles">
+<img src="Girasoles_rosas_amarillas.jpg" alt="Bouquet Aura Dorada" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Bouquet Aura Dorada</h3>
 <p>Una composición radiante y sofisticada que transmite luz, alegría y elegancia. Este bouquet combina la imponente energía de los girasoles premium con la delicadeza y suavidad de las rosas amarillas, creando un contraste monocromático espectacular.</p>
@@ -649,8 +672,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="Bouquet_Rosa_roja.jpg" alt="Bouquet Pasión Real">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="Bouquet_Rosa_roja.jpg" alt="Bouquet Pasión Real" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Bouquet Pasión Real</h3>
 <p>La máxima expresión del romance y la elegancia clásica. Este espectacular bouquet está integrado por 15 rosas rojas premium de apertura perfecta, seleccionadas minuciosamente por su color intenso y textura aterciopelada. Su imponente empaque de lujo en tonos champán y rojo profundo, acompañado de un gran lazo satinado, lo convierte en el detalle ideal para aniversarios, declaraciones de amor y momentos inolvidables.</p>
@@ -659,8 +682,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="caja_rosas_rosa.jpg" alt="Caja de Orquídeas Real">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="caja_rosas_rosa.jpg" alt="Caja de Orquídeas Real" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Caja de Orquídeas Real</h3>
 <p>Exclusivo arreglo floral que combina elegantes orquídeas phalaenopsis blancas y rosas rosadas premium, acompañadas de follaje de eucalipto. Presentado en una sofisticada sombrerera blanca con detalles dorados, es el regalo perfecto para aniversarios, nacimientos y celebraciones especiales.</p>
@@ -669,8 +692,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-<div class="producto">
-<img src="Canasta_Frutal.jpg" alt="Canasta Frutal Premium">
+<div class="producto" data-cat="Frutas">
+<img src="Canasta_Frutal.jpg" alt="Canasta Frutal Premium" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Canasta Frutal Premium</h3>
 <p>Un regalo saludable, abundante y lleno de color. Esta hermosa canasta de mimbre artesanal reúne una selección premium de frutas frescas y exóticas, incluyendo piña, melón, bananos, manzanas, peras, mangos y jugosas uvas.</p>
@@ -679,8 +702,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-<div class="producto">
-<img src="Caja_Pasion_eterna.jpg" alt="Caja de Rosas Pasión Eterna">
+<div class="producto" data-cat="Flores y bouquets">
+<img src="Caja_Pasion_eterna.jpg" alt="Caja de Rosas Pasión Eterna" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Caja de Rosas Pasión Eterna</h3>
 <p>La máxima distinción en el arte de regalar flores. Este exclusivo diseño reúne una cuidada selección de una docena de rosas rojas premium de tallo largo, elegantemente dispuestas dentro de una sofisticada caja de lujo, creando un detalle inolvidable para expresar amor, admiración y elegancia.</p>
@@ -689,8 +712,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-<div class="producto">
-<img src="Caja_rosas_pasion.jpg" alt="Caja de Rosas Pasión Colombiana">
+<div class="producto" data-cat="Flores y bouquets">
+<img src="Caja_rosas_pasion.jpg" alt="Caja de Rosas Pasión Colombiana" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Caja de Rosas Pasión Colombiana</h3>
 <p>Una espectacular flower box que combina un elegante semicírculo de rosas rojas premium de exportación con una exótica orquídea cymbidium en tonos blancos y violetas. Un diseño sofisticado que transmite amor, elegancia y exclusividad.</p>
@@ -699,8 +722,8 @@ Solicitar por WhatsApp
 </div>
 </div>
 
-  <div class="producto">
-<img src="Rosas_rojas_Beilys.jpg" alt="Combo Pasión Original">
+  <div class="producto" data-cat="Flores y bouquets">
+<img src="Rosas_rojas_Beilys.jpg" alt="Combo Pasión Original" loading="lazy" decoding="async">
 <div class="producto-info">
 <h3>Combo Pasión Original</h3>
 <p>La combinación perfecta entre elegancia y celebración. Incluye un espectacular bouquet de rosas rojas premium de exportación, cuidadosamente envuelto en papel coreano texturizado, acompañado de una botella de Baileys Original (700 ml), creando un regalo inolvidable para sorprender en cualquier ocasión especial.</p>
@@ -781,7 +804,7 @@ Solicitar por WhatsApp
     b.className = "ad-tab" + (i===0 ? " activa" : "");
     b.textContent = cat;
     b.onclick = function(){
-      document.querySelectorAll(".ad-tab").forEach(function(t){ t.classList.remove("activa"); });
+      document.querySelectorAll("#ad-tabs .ad-tab").forEach(function(t){ t.classList.remove("activa"); });
       b.classList.add("activa");
       pintar(cat);
     };
@@ -798,19 +821,19 @@ Solicitar por WhatsApp
               <div class="productos">
               
                 <div class="producto">
-                  <img src="Entrega_1.jpeg" alt="Entrega 1">
+                  <img src="Entrega_1.jpeg" alt="Entrega de arreglo floral realizada en Bogotá" loading="lazy" decoding="async">
                 </div>
 
                     <div class="producto">
-                  <img src="cliente_pasioncolombiana.png" alt="Entrega 1">
+                  <img src="cliente_pasioncolombiana.jpg" alt="Cliente recibiendo rosas rojas en caja" loading="lazy" decoding="async">
                 </div>
 
                                    <div class="producto">
-                  <img src="petalos_alma.jpeg" alt="Entrega 1">
+                  <img src="petalos_alma.jpeg" alt="Entrega de arreglo floral a un cliente en Bogotá" loading="lazy" decoding="async">
                 </div>
                 
                  <div class="producto">
-                  <img src="flores_frutas.jpeg" alt="Entrega 1">
+                  <img src="flores_frutas.jpeg" alt="Entrega de arreglo con flores y frutas" loading="lazy" decoding="async">
                 </div>
                 
               </div>
@@ -894,6 +917,23 @@ Chapinero • Usaquén • Suba • Engativá • Kennedy • Fontibón • Teus
 </section>
 
 <!-- CONTACTO -->
+<!-- PREGUNTAS FRECUENTES -->
+<section class="catalogo" id="preguntas">
+
+<h2>Preguntas frecuentes</h2>
+
+<div class="faq">
+<details><summary>¿Cómo hago mi pedido?</summary><p>Escríbenos por WhatsApp al 317 636 0337, cuéntanos qué arreglo quieres y dónde y a qué hora debe llegar. Te confirmamos disponibilidad y valor.</p></details>
+<details><summary>¿Atienden las 24 horas?</summary><p>Sí. Atendemos todos los días del año, las 24 horas, por WhatsApp.</p></details>
+<details><summary>¿En cuánto tiempo entregan?</summary><p>Nuestra entrega es en menos de 2 horas en Bogotá.</p></details>
+<details><summary>¿A qué lugares entregan?</summary><p>A funerarias, iglesias, hospitales, empresas y hogares en Bogotá: Chapinero, Usaquén, Suba, Engativá, Kennedy, Fontibón, Teusaquillo, Barrios Unidos, Bosa y Ciudad Bolívar. También hacemos entregas en municipios cercanos.</p></details>
+<details><summary>¿Puedo agregar un detalle a mi arreglo?</summary><p>Sí. En la sección Adicionales encuentras peluches, globos, licores, chocolates y canastas para acompañar tu pedido. Pídelos por WhatsApp junto con tu arreglo.</p></details>
+</div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Cómo hago mi pedido?", "acceptedAnswer": {"@type": "Answer", "text": "Escríbenos por WhatsApp al 317 636 0337, cuéntanos qué arreglo quieres y dónde y a qué hora debe llegar. Te confirmamos disponibilidad y valor."}}, {"@type": "Question", "name": "¿Atienden las 24 horas?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Atendemos todos los días del año, las 24 horas, por WhatsApp."}}, {"@type": "Question", "name": "¿En cuánto tiempo entregan?", "acceptedAnswer": {"@type": "Answer", "text": "Nuestra entrega es en menos de 2 horas en Bogotá."}}, {"@type": "Question", "name": "¿A qué lugares entregan?", "acceptedAnswer": {"@type": "Answer", "text": "A funerarias, iglesias, hospitales, empresas y hogares en Bogotá: Chapinero, Usaquén, Suba, Engativá, Kennedy, Fontibón, Teusaquillo, Barrios Unidos, Bosa y Ciudad Bolívar. También hacemos entregas en municipios cercanos."}}, {"@type": "Question", "name": "¿Puedo agregar un detalle a mi arreglo?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. En la sección Adicionales encuentras peluches, globos, licores, chocolates y canastas para acompañar tu pedido. Pídelos por WhatsApp junto con tu arreglo."}}]}</script>
+
+</section>
+
 <section class="contacto" id="contacto">
 
   
@@ -913,6 +953,34 @@ WhatsApp: 317 636 0337
 <footer>
 © 2026 Detalles y Arreglos - Bogotá
 </footer>
+
+<div class="bottom-bar" role="navigation" aria-label="Menú rápido">
+<a href="#catalogo"><span>🌹</span>Catálogo</a>
+<a href="#adicionales"><span>🎁</span>Adicionales</a>
+<a href="#preguntas"><span>❓</span>Preguntas</a>
+<a class="wa" href="https://wa.me/573176360337?text=Hola,%20necesito%20ayuda%20con%20un%20pedido" target="_blank" rel="noopener"><span>💬</span>WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  var prods=[].slice.call(document.querySelectorAll('#catalogo .producto[data-cat]'));
+  var bar=document.getElementById('cat-tabs');
+  if(!bar||!prods.length) return;
+  var cats=['Todos'];
+  prods.forEach(function(p){var c=p.getAttribute('data-cat'); if(cats.indexOf(c)<0) cats.push(c);});
+  cats.forEach(function(c,i){
+    var b=document.createElement('button');
+    b.className='ad-tab'+(i===0?' activa':'');
+    b.textContent=c;
+    b.onclick=function(){
+      [].forEach.call(bar.querySelectorAll('.ad-tab'),function(t){t.classList.remove('activa');});
+      b.classList.add('activa');
+      prods.forEach(function(p){p.style.display=(c==='Todos'||p.getAttribute('data-cat')===c)?'':'none';});
+    };
+    bar.appendChild(b);
+  });
+})();
+</script>
 
 <a class="whatsapp" href="https://wa.me/573176360337">
 WhatsApp
